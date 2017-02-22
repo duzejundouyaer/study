@@ -43,7 +43,7 @@ Route::get('curr','MarketController@curr');//全部课程分类
 Route::get('cont','MarketController@cont');//课程详情
 Route::get('bfang','MarketController@bfang');//课程详情
 
-Route::post('shopcart','MarketController@shopcart');//加入购物车
+Route::post('addcart','MarketController@shopcart');//加入购物车
 Route::get('select_cart','MarketController@getCart');//查看用户是否已经将视频添加到购物车
 
 Route::get('more','MoreController@more');//更多
