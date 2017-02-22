@@ -17,15 +17,14 @@ class WelcomeController extends Controller{
          $rel=DB::table('study_adv')->get();
         
          //精选
-         $res=DB::table('study_cur')->orwhere('cur_price','=',0)->where('cur_is_heat','=',1)->where('cur_is_new','=',1)
-             ->distinct()->take(3)->orderBy('cur_is_new', 'asc')->get();
+         $res=DB::table('study_cur')->where('cur_is_heat','=',1)->where('cur_is_new','=',1)
+         ->distinct()->take(3)->orderBy('cur_is_new', 'desc')->get();
         //print_r($res);die;
-         //热门
-         $str=DB::table('study_cur')->orwhere('cur_price',0)->where('cur_is_heat','=',1)
-            ->orderBy('cur_is_heat', 'desc')->distinct()->take(3)->get();
+         //付费
+         $str=DB::table('study_cur')->orwhere('cur_price','>=',1)->orderBy('cur_id','desc')->distinct()->take(3)->get();
         //print_r($he);die;
-        //系列        
-         $re=DB::table('study_cur')->where('cur_price','>=',100)->orderBy('cur_is_new', 'desc')
+        //免费       
+         $re=DB::table('study_cur')->where('cur_price','=',0)->orderBy('cur_id', 'desc')
                ->distinct()->take(3)->get();
          //print_r($heat);die;
           return view('welcome.welcome',['rel'=>$rel,'res'=>$res,'str'=>$str,'re'=>$re]);
@@ -50,22 +49,22 @@ class WelcomeController extends Controller{
 
 /** 
  *
- * 精选系列课程
+ * 免费课程
  */
     
  public function selected(){
 
-    $re=DB::table('study_cur')->where('cur_price','>=',100)->orderBy('cur_price', 'desc')->take(5)->get();
+    $re=DB::table('study_cur')->where('cur_price','=',0)->orderBy('cur_id', 'desc')->take(5)->get();
   // print_r($re);die; 
  	return view('welcome.selected',['re'=>$re]);
  }
    
    /**
     *
-    * 热门推荐
+    * 付费课程
     */
 public function recommend(){
-     $heat=DB::table('study_cur')->where('cur_is_heat','=',1)->orderBy('cur_is_heat', 'desc')->take(5)->get();
+     $heat=DB::table('study_cur')->where('cur_price','>=',1)->orderBy('cur_id', 'desc')->take(5)->get();
 	 return view('welcome.recommend',['heat'=>$heat]);
 }
 
