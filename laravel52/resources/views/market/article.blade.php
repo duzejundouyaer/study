@@ -40,7 +40,7 @@
 <ion-view title="Home" hide-nav-bar="true">
     <ion-scroll  direction="y" scrollbar-y="false" style="width: 100%; height: 100%">
 <section>
-    <div class="nxqalbum">
+    <div class="nxqalbum" style="margin-top: 45px;">
         <img src="http://more.com<?=$curone['cur_img']?>" data-original="" class="nxqtopimg sw_loading" />
         <div style="position: absolute;width: 100%;height: 40px;bottom:0;left: 0;background: rgba(0,0,0,0.5)">
             <div class="imgInto" style="color: #f6fdfd">
@@ -99,16 +99,22 @@
     </div>
 </section>
         <section class="bg1 mt10" style="margin-top: 0;border-top: none">
-            <div class="InsDetails3" style="border-top: none;font-size: 15px;">
+            <div class="InsDetails3" style="border-top: none;font-size: 15px;background-color: #f9fde1">
                 <?=$kejie['cur_name']?>:
                 <?php foreach($kejie['pp'] as $key=>$val){?>
-                    <br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=$val['chapter']?>
-                    <br/>
+                    <dl style="text-align: left">
+                        <dt>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;
+                            ☟&nbsp;<?=$val['chapter']?>
+                        </dt>
+                    </dl>
                     <?php foreach($val['pp'] as $k=>$v){?>
-                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <a href="{{URL('bfang')}}?fid=<?=$v['id']?>&cur_id=<?=$curone['cur_id']?>" ids="<?=$v['id']?>" class="bfang"><?=$v['file_name']?></a>
-                    <br/>
+                         <dd>
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <a href="{{URL('bfang')}}?fid=<?=$v['id']?>&cur_id=<?=$curone['cur_id']?>" ids="<?=$v['id']?>" class="bfang"><?=$v['file_name']?></a>
+                         </dd>
                     <?php }?>
                 <?php }?>
             </div>
