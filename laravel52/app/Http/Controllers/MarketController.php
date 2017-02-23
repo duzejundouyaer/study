@@ -86,11 +86,6 @@ class MarketController extends Controller{
      public function shopcart(){
          $session = new Session;
         $nickname = $session->get('nickname');
-      if(empty($nickname))
-       {
-         return redirect('login');
-       }else
-       {
              $id=Input::get("id");
              $cart = new Cart();
              $session = new Session;
@@ -108,7 +103,6 @@ class MarketController extends Controller{
              {
                 echo 0;
              }
-        }
      }
     /**
      * 查询用户是否已经将视频添加到购物车

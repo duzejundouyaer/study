@@ -164,7 +164,7 @@
             <div style="margin:10px auto;width:40px;height:40px;border-radius:40px;overflow:hidden;">
                 <img src="{{asset('style/img/02.png')}}" style="margin:0;width:100%;height:100%;">
             </div>
-            <p style="font-size:11px; text-align:center">精品系列课程</p>
+            <p style="font-size:11px; text-align:center">免费课程</p>
           </a> 
        </td>
       <td >
@@ -172,7 +172,7 @@
             <div style="margin:10px auto;width:40px;height:40px;border-radius:40px;overflow:hidden;">
                 <img src="{{asset('style/img/03.png')}}" style="margin:0;width:100%;height:100%;">
             </div>
-            <p style="font-size:11px; text-align:center">热门推荐</p>
+            <p style="font-size:11px; text-align:center">收费课程</p>
         </a>
       </td>
       <td>
@@ -207,7 +207,7 @@
     <p></p>
 
       <div>
-         <p style="background-color:#99BBFF  ">热门推荐</p>
+         <p style="background-color:#99BBFF  ">付费课程</p>
         <?php foreach ($str as $key => $value) {?>
           
         
@@ -216,7 +216,7 @@
                      <li>
                     <div class="bord">
                         <div class="lt">
-                            <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
+                            <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
                         </div>
                         <div class="rt">
                             <a href="#" title="">
@@ -249,7 +249,7 @@
       </div>
 
        <div>
-         <p style="background-color:#99BBFF  ">精选系列课程</p>
+         <p style="background-color:#99BBFF  ">免费课程</p>
         <?php foreach ($re as $key => $value) {?>
           
         
@@ -258,7 +258,7 @@
                      <li>
                     <div class="bord">
                         <div class="lt">
-                            <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
+                            <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
                         </div>
                         <div class="rt">
                             <a href="#" title="">
@@ -299,7 +299,7 @@
                      <li>
                     <div class="bord">
                         <div class="lt">
-                            <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
+                            <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
                         </div>
                         <div class="rt">
                             <a href="#" title="">
@@ -331,7 +331,7 @@
     </div>
 
     </div>
-    <div style="height:2px;width:100%;clear:all"></div>
+    <div style="height:50px;width:100%;clear:all"></div>
      </ion-scroll>
     </ion-view>
    </div>  
@@ -357,7 +357,7 @@
         var str='';
       console.log(msg);
          for(var i=0;i<msg.length;i++){
-              str+="<div class='NewsList'><ul class='clearfix classul'><li><div class='bord'><div class='lt'><a href='{{URL('cont')}}?cur_id="+msg[i]['cur_id']+"'><img src=http://admin.duzejun.cn/"+msg[i]['cur_img']+" height='50px;' width='50px;' /></a></div><div class='rt'><a href='#' ><div class='rt1'><h3>"+msg[i]['cur_name']+"</h3><p>"+msg[i]['cur_describe']+"</p></div></a><div class='rt2'><p class='orange'><i class='f15 mr5'>&yen;</i><i class='f20'>"+msg[i]['cur_price']+"</i></p></div></div></div></li></ul></div>";
+              str+="<div class='NewsList'><ul class='clearfix classul'><li><div class='bord'><div class='lt'><a href='{{URL('cont')}}?cur_id="+msg[i]['cur_id']+"'><img src="+msg[i]['cur_img']+" height='50px;' width='50px;' /></a></div><div class='rt'><a href='#' ><div class='rt1'><h3>"+msg[i]['cur_name']+"</h3><p>"+msg[i]['cur_describe']+"</p></div></a><div class='rt2'><p class='orange'><i class='f15 mr5'>&yen;</i><i class='f20'>"+msg[i]['cur_price']+"</i></p></div></div></div></li></ul></div>";
        }
         $("#div1").html(str);
     },'json')
