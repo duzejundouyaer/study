@@ -1,3 +1,7 @@
+<?php  
+use Symfony\Component\HttpFoundation\Session\Session;
+$session = new Session();
+?>
 <html ng-app="ionicApp">
 <head>
     <meta charset="UTF-8">
@@ -133,7 +137,7 @@
         <?php if($curone['cur_price']!=0){?>
         <div class="bk_fix_bottom">
             <div class="bk_half_area">
-                <button class="weui_btn weui_btn_primary" style="font-size: 15px" id="addCart" onclick="_toCharge(<?=$kejie['cur_id']?>);">加入购物车</button>
+                <button class="weui_btn weui_btn_primary"  style="font-size: 15px" id="addCart" onclick="_toCharge(<?=$kejie['cur_id']?>);">加入购物车</button>
             </div>
             <div class="bk_half_area">
                 <button class="weui_btn weui_btn_default" style="font-size: 15px" id="look" >查看</button>
@@ -156,6 +160,7 @@
 <script type="text/javascript" src="{{asset('style/layer/layer.js')}}"></script>
 <script>
 $(function(){
+
     var id = "<?=$kejie['cur_id']?>";
     $.ajax({
    type: "GET",
@@ -168,6 +173,9 @@ $(function(){
             $("#addCart").css('background','#d0d0d0');
             $("#addCart").css('color','#000');
             $("#addCart").attr("disabled", true);
+       }else
+       {
+          $("#addCart").attr("disabled", false);
        }
    }
 });
@@ -181,19 +189,27 @@ $(function(){
 //        alert(bfang)
        location.href = '/bfang?fid='+bfang+'&cur_id='+cur_id;
     }
+
+    
     //加入购物车
     function _toCharge(id){
-        $.post("{{url('shopcart')}}",{'_token':'{{csrf_token()}}','id':id},function(data){
-//              alert(data)
-            layer.msg(11111, {icon: 6});
-            if(data.status == 0){
-//                location.href = location.href;
-                 $("#addCart").html('已加入购物车');
-                 $("#addCart").css('background','red');
-                 $("#addCart").css('color','#000');
-                 $("#addCart").attr("disabled", true);
-            }
-        });
+        var user_session = "<?=$session->get('nickname');?>";
+          if(user_session == '')
+          {
+            alert('请登录');
+            location.href="{{URL('login')}}";
+            return false;
+          }
+            $.post("{{URL('addcart')}}",{'_token':'{{csrf_token()}}','id':id},function(data){
+                if(data.status == 0){
+    //                location.href = location.href;
+                     $("#addCart").html('已加入购物车');
+                     $("#addCart").css('background','red');
+                     $("#addCart").css('color','#000');
+                     $("#addCart").attr("disabled", true);
+                }
+            });
+     
     }
     //查看购物车
     function _onDelete(){
