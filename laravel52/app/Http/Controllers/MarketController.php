@@ -85,7 +85,7 @@ class MarketController extends Controller{
     ///加入购物车
      public function shopcart(){
          $session = new Session;
-        $nickname = $session->get('nickname');
+         $nickname = $session->get('nickname');
              $id=Input::get("id");
              $cart = new Cart();
              $session = new Session;
@@ -179,7 +179,8 @@ class MarketController extends Controller{
              $session = new Session();
              $name = $session->get('nickname');
              $user = DB::table('study_user')->where('nickname', '=',$name)->first();
-             $id = $user['user_id'];
+             $id = $user['user_id']; //用户ID
+             //$res = DB::table('study_cart')->where('user_id',$id)->where('')
              $res = DB::table('study_order')
                  ->where('user_id',$id)
                  ->where('weiyi',$dingdan)

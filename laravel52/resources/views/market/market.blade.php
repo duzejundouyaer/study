@@ -22,7 +22,7 @@
 	{{--</div>--}}
 
 <div class="top_tit">
-    <span class="top_tit_left"></span>
+    <span class="top_tit_left" onclick="history.go(-1);"></span>
     <span class="top_tit_center">全部课程</span>
 </div>
 <!--内容-->
