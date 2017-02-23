@@ -58,17 +58,21 @@ class CenterController extends Controller{
              return redirect('login');
              die();
           }else{
-            $request = $request->all();
-            $img = $request['file'];
-            preg_match("/^.*,(.*)$/is",$img,$res);
-            $name = time().rand(100,900);
-            file_put_contents("./style/images/$name.jpg",base64_decode($res[1]));
-            $filename = "./style/images/$name.jpg";
+              $user = new User();
+             $request = $request->all();
+             $img = $request['file'];
             $nickName = $request['nickname'];
             $desc = $request['desc'];
-            $user = new User();
-            $reg = $user->Update_info($nickname,$nickName,$desc,$filename);
-            if($reg == 1)
+            preg_match("/^.*,(.*)$/is",$img,$res);
+            $name = time().rand(100,900);
+            if(!empty($img)){
+                file_put_contents("./style/images/$name.jpg",base64_decode($res[1]));
+                $filename = "./style/images/$name.jpg";
+                $reg = $user->Update_info($nickname,$nickName,$desc,$filename);
+            }else{
+                $reg = $user->Updateinfo($nickname,$nickName,$desc);
+            }
+              if($reg == 1)
             {
                 $session->set('nickname',$nickName);
                 return 0;

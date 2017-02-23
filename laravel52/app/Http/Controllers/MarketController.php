@@ -136,27 +136,42 @@ class MarketController extends Controller{
      {
          $img = Input::get('img');
          $courseName = Input::get('courseName');
-         print_r($courseName);die;
+         //处理
          $curPrice = Input::get('curPrice');
          $curId = Input::get('curId');
          $token = Input::get('_token');
+         $imgs =  rtrim($img,',');
+         $imgg = explode(',',$imgs);
+
+         $name = rtrim($courseName,',');
+         $cname = explode(',',$name);
+
+         $pric = rtrim($curPrice,',');
+         $price = explode(',',$pric);
+
+         $id = rtrim($curId,',');
+         $curid = explode(',',$id);
+
          $time = time()+8*8*60;
          $session = new Session();
          $name = $session->get('nickname');
          $user = DB::table('study_user')->where('nickname', '=',$name)->first();
-         $id = $user['user_id'];
+         $id = $user['user_id'];//用户id
          //唯一订单号
          $weiyi = "duoxue".time().rand(100,900);
-         $user=array(
-             'cur_img'=>$img,
-             'order_name'=>$courseName,
-             'add_time'=>date("Y-m-d H:i:s",$time),
-             'user_id'=>$id,
-             'cur_id'=>$curId,
-             'weiyi'=>$weiyi,
-             'price'=>$curPrice
-         );
-         $re = DB::table('study_order')->insert($user);
+         foreach ($curid as $k=>$v){
+             $user=array(
+                 'cur_img'=>$imgg[$k],
+                 'order_name'=>$cname[$k],
+                 'add_time'=>date("Y-m-d H:i:s",$time),
+                 'user_id'=>$id,
+                 'cur_id'=>$v,
+                 'weiyi'=>$weiyi,
+                 'price'=>$price[$k]
+             );
+             $re = DB::table('study_order')->insert($user);
+         }
+
          if($re){
              //商品名
              $goods_name = $courseName;
@@ -180,6 +195,11 @@ class MarketController extends Controller{
              $name = $session->get('nickname');
              $user = DB::table('study_user')->where('nickname', '=',$name)->first();
              $id = $user['user_id']; //用户ID
+             //查询出订单对应的id
+             $order = DB::table('study_order')->where('weiyi', '=',$dingdan)->get();
+             foreach ($order as $k=>$v){
+                 $r = DB::table('study_cart')->where('cart_id', '=',$v['cur_id'])->delete();
+             }
              //$res = DB::table('study_cart')->where('user_id',$id)->where('')
              $res = DB::table('study_order')
                  ->where('user_id',$id)
@@ -219,8 +239,8 @@ class MarketController extends Controller{
             "partner" => $alipay_config['partner'], 				// 合作身份者id
             "seller_email" => $alipay_config['seller_email'],       // 收款支付宝账号
             "payment_type"	=> '1', // 支付类型
-            "notify_url"	=> "http://home.duzejun.cn/result", 			// 服务器异步通知页面路径
-            "return_url"	=> "http://home.duzejun.cn/result", 		// 页面跳转同步通知页面路径
+            "notify_url"	=> "http://www.home.com/result", 			// 服务器异步通知页面路径
+            "return_url"	=> "http://www.home.com/result", 		// 页面跳转同步通知页面路径
             "out_trade_no"	=> $weiyi, 								// 商户网站订单系统中唯一订单号
             "subject"	=> $goods_name, 								// 订单名称
             "total_fee"	=> $price, 									// 付款金额
