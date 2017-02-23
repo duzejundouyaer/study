@@ -131,12 +131,12 @@
                         <div class="rt">
                             <a href="#" title="">
                                 <div class="rt1">
-                                    <h3 id="courseName"><?=$val['course_name']?></h3>
+                                    <h3 class="courseName"><?=$val['course_name']?></h3>
                                     <a href="javascript:void(0)"><p id="addTime"><?=$val['add_time']?></p></a>
                                </div>
                             </a>
                             <div class="rt2">
-                                <p class="orange"><i class="f15 mr5">&yen;</i><i class="f20" id="curPrice"><?=$val['cur_price']?></i></p>
+                                <p class="orange"><i class="f15 mr5">&yen;</i><i class="f20" ><?=$val['cur_price']?></i></p>
                                 <p style="margin-top:10px;" id="<?=$val['cart_id']?>"><a href="javascript:void(0)" id="del">删除</a></p>
                            </div>
                         </div>
@@ -148,7 +148,7 @@
                  
                  
   </div>
-    <div style="height:50px;width:100%;clear:all "><p style="float:right;margin-top:30px;margin-right:20px;font-size:16px;">共<span style="color:red;">{{$price}}</span>元</p></div>
+    <div style="height:50px;width:100%;clear:all "><p style="float:right;margin-top:30px;margin-right:20px;font-size:16px;">共<span style="color:red;" id="curPrice">{{$price}}</span>元</p></div>
     <div>
               <a class="button button-block button-positive" href="javascript:void(0);" id="buy" style="background:red;">点击付款 </a>
         </div> 
@@ -181,8 +181,12 @@
             });
          })
          $("#buy").click(function(){
+              var courseName = '';
               var img = $("#img").attr('src');
-              var courseName = $("#courseName").html();
+             // var courseName = $("#courseName").html();
+              $(".courseName").each(function(){
+                  courseName+=$(this).html()+',';
+              })
               var addTime = $("#addTime").html();
               var curPrice = $("#curPrice").html();
               var curId = $("#del").parent().attr('id');
