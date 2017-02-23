@@ -44,9 +44,9 @@
 		@endif
 	</div>
 		<a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101371415&redirect_uri=http://xiaodu.duzejun.cn/&state=test&display=mobile">
-			<img src="{{asset('style/img/qq.png')}}">
+			<img src="{{asset('style/img/qq222.png')}}">
 		</a>
-	<a href="https://api.weibo.com/oauth2/authorize?client_id=897879465&redirect_uri=http://study.duzejun.cn/weibo&display=mobile"><img src="{{asset('style/img/xin.png')}}" alt=""></a>
+	<a href="https://api.weibo.com/oauth2/authorize?client_id=61581137&redirect_uri=http://home.duzejun.cn/weibo&display=mobile"><img src="{{asset('style/img/weibo.png')}}" alt=""></a>
 </div>
 </body>
 </html>
