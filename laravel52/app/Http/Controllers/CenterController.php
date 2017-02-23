@@ -22,8 +22,8 @@ class CenterController extends Controller{
     	//$request->session()->put('key', '黄文靖');
     	//$value = $request->session()->pull('key', 'default');
         $session = new Session();
-        $nickname = $session->get('nickname');
-        $arr = DB::table('study_user')->where('nickname',$nickname)->first();
+        $nickname = $session->get('id');
+        $arr = DB::table('study_user')->where('user_id',$nickname)->first();
         return view('center.center',['arr'=>$arr]);
     }
     /**
@@ -40,8 +40,9 @@ class CenterController extends Controller{
              die;
           }else
           {
+              $id =  $session->get('id');
             $User = new User();
-            $Info = $User->infomation($nickname);
+            $Info = $User->infomation($id);
           }
         return view('myinfo.myinfo',['info'=>$Info]);
     }

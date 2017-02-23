@@ -142,6 +142,7 @@ class MarketController extends Controller{
      {
          $img = Input::get('img');
          $courseName = Input::get('courseName');
+         print_r($courseName);die;
          $curPrice = Input::get('curPrice');
          $curId = Input::get('curId');
          $token = Input::get('_token');
@@ -223,8 +224,8 @@ class MarketController extends Controller{
             "partner" => $alipay_config['partner'], 				// 合作身份者id
             "seller_email" => $alipay_config['seller_email'],       // 收款支付宝账号
             "payment_type"	=> '1', // 支付类型
-            "notify_url"	=> "http://www.studyhome.com/result", 			// 服务器异步通知页面路径
-            "return_url"	=> "http://www.studyhome.com/result", 		// 页面跳转同步通知页面路径
+            "notify_url"	=> "http://home.duzejun.cn/result", 			// 服务器异步通知页面路径
+            "return_url"	=> "http://home.duzejun.cn/result", 		// 页面跳转同步通知页面路径
             "out_trade_no"	=> $weiyi, 								// 商户网站订单系统中唯一订单号
             "subject"	=> $goods_name, 								// 订单名称
             "total_fee"	=> $price, 									// 付款金额

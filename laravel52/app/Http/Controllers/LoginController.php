@@ -53,6 +53,7 @@ class LoginController extends Controller{
             }else{
                 $session = new Session;
                 $session->set('nickname',$arr['nickname']);
+                $session->set('id',$arr['user_id']);
                 return redirect('/');
             }
         }else{
@@ -81,7 +82,7 @@ class LoginController extends Controller{
         date_default_timezone_set('PRC');
         $code = @$_GET['code'];
         $url = "https://api.weibo.com/oauth2/access_token";
-        $data = "client_id=897879465&client_secret=19cb3e358724b0a490559cf0f4814183&grant_type=authorization_code&code=$code&redirect_uri=http://study.duzejun.cn/weibo";
+        $data = "client_id=61581137&client_secret=094717fc7b87c55520c31758b846ed19&grant_type=authorization_code&code=$code&redirect_uri=http://home.duzejun.cn/weibo";
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -112,11 +113,12 @@ class LoginController extends Controller{
         $info = file_get_contents("https://api.weibo.com/2/users/show.json?access_token=$token&uid=$uid");
         $userinfo = json_decode($info,true);
         //先查询用户是否存在本网站中
-        $res = DB::table('study_user')->where('open_id','=',$userinfo['id'])->get();
+        $res = DB::table('study_user')->where('open_id','=',$userinfo['id'])->first();
         if($res){
             //有的话直接登陆  存session
             $session = new Session;
             $session->set('nickname',$userinfo['name']);
+            $session->set('id',$res['user_id']);
             return redirect('/');
         }else{
             //没有的话相当于注册  一个
@@ -130,8 +132,10 @@ class LoginController extends Controller{
             );
             $re = DB::table('study_user')->insert($user);
             if($re){
+                $user_id = DB::insertGetId();
                 $session = new Session;
                 $session->set('nickname',$userinfo['name']);
+                $session->set('id',$user_id);
                 return redirect('/');
             }else{
                 return redirect('login');
@@ -145,7 +149,7 @@ class LoginController extends Controller{
     {
         date_default_timezone_set('PRC');
         $token = Input::get('token');
-        //header('Location: http://music.daphp.top/login_qq?code='.$open_id.'&token='.$open_id);
+
         $open_id = file_get_contents('https://graph.qq.com/oauth2.0/me?access_token='.$token);
         $pre = '#callback\((.*)\)#isU';
         preg_match($pre,$open_id,$user);
@@ -153,11 +157,12 @@ class LoginController extends Controller{
         $userinfo = file_get_contents("https://graph.qq.com/user/get_user_info?access_token=$token&oauth_consumer_key=101371415&openid=".$open_id['openid']);
         $users = json_decode($userinfo,true);
         //查一下此用户是否在本网战使用qq登陆过
-        $res = DB::table('study_user')->where('open_id','=',$open_id['openid'])->get();
+        $res = DB::table('study_user')->where('open_id','=',$open_id['openid'])->first();
         if($res){
             //如果有直接存session  进首页
             $session = new Session;
             $session->set('nickname',$users['nickname']);
+            $session->set('id',$res['user_id']);
             return redirect('/');
         }else{
             //没有的话相当于注册  一个
@@ -171,6 +176,10 @@ class LoginController extends Controller{
             );
             $re = DB::table('study_user')->insert($user);
             if($re){
+                $user_id = DB::insertGetId();
+                $session = new Session;
+                $session->set('nickname',$userinfo['name']);
+                $session->set('id',$user_id);
                 return redirect('/');
             }else{
                 return redirect('login');
