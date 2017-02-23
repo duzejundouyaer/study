@@ -44,10 +44,10 @@ $session = new Session();
     <div style="display:none;" id="user_info">
              <div style="width:70px;height:70px;"></div>
               <div style="margin:10px auto;width:100px;height:100px;border-radius:50px;overflow:hidden;">
-                    <img src="<?php echo $arr['img']?>" style="margin:0;width:100%;height:100%;">
+                    <img src="{{$arr['img']}}" style="margin:0;width:100%;height:100%;">
               </div>
 
-                   <p style="text-align:center">昵称：<?php echo $arr['nickname']?></p>
+                   <p style="text-align:center">昵称：{{$arr['nickname']}}</p>
               <div>
 
                  <ul class="list">
