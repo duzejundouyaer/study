@@ -6,7 +6,13 @@
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width,height=device-height">
 <link rel="stylesheet" type="text/css" href="{{asset('style/css/ionic.css')}}">  
  <!-- <link rel="stylesheet" type="text/css" href="ionic.min.css">  -->
-  
+	<style>
+		.box{
+			margin-left: 100px;
+			line-height: 30px;
+			width: 300px;
+		}
+	</style>
 </head>
 <body>
 <div class="scroll-content padding" id="index_login">
@@ -43,11 +49,15 @@
 			<p style="font-size: 16px; color:red;" id="errorInfo">{{session('errors')}}</p>
 		@endif
 	</div>
+	<div style="float: left;margin-left: 80px;margin-top: 30px">
 		<a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101371415&redirect_uri=http://xiaodu.duzejun.cn/&state=test&display=mobile">
 			<img src="{{asset('style/img/qq222.png')}}">
 		</a>
+	</div>
+	<div style="margin-left: 80px;float: left;margin-top: 30px">
 	<a href="https://api.weibo.com/oauth2/authorize?client_id=61581137&redirect_uri=http://home.duzejun.cn/weibo&display=mobile"><img src="{{asset('style/img/weibo.png')}}" alt=""></a>
 </div>
+	</div>
 </body>
 </html>
 <script src="{{asset('style/js/jquery.js')}}"></script>
