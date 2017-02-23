@@ -135,7 +135,7 @@
                                     <a href="javascript:void(0)"><p class="addTime"><?=$val['add_time']?></p></a>
                                </div>
                             </a>
-                           <span style="" class="get"><?=$val['cart_id']?></span>
+                           <span style="display: none" class="get"><?=$val['cart_id']?></span>
                             <div class="rt2">
                                 <p class="orange"><i class="f15 mr5">&yen;</i><i class="f20" ><?=$val['cur_price']?></i></p>
                                 <p style="margin-top:10px;" id="<?=$val['cart_id']?>" ><a href="javascript:void(0)" class="del" id="del">删除</a></p>
@@ -206,6 +206,7 @@
                  url: "{{URL('pay')}}",
                  data: {img:img,courseName:courseName,curPrice:curPrice,curId:curId,_token:_token},
                  success: function(msg){
+                     //alert(msg);return false;
                      if(msg == 1)
                      {
                          $("#info").html("失败");
