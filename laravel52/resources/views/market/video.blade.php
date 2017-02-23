@@ -33,16 +33,16 @@
 <!--顶部-->
 <div class="bar bar-header bar-positive  " >
     <a class="button button-clear icon ion-ios-arrow-left"  onclick="history.go(-1);"></a>
-    <h1 class="title">课程列表</h1>
+    <h1 class="title"><?=$onetv['file_name']?></h1>
 
 </div>
 <!--内容-->
 <ion-view title="Home" hide-nav-bar="true">
     <ion-scroll  direction="y" scrollbar-y="false" style="width: 100%; height: 100%">
 <section>
-    <div class="nxqalbum"style="border-top: 40px;">
+    <div class="nxqalbum"style="margin-top: 30px;">
         <video id="myVideo" width="300" height="220" controls poster="./style/001.jpg">
-            <source src="http://more.com<?=$onetv['url']?>" type="video/mp4">
+            <source src="http://admin.duzejun.cn<?=$onetv['url']?>" type="video/mp4">
         </video>
     </div>
 </section>
@@ -50,17 +50,30 @@
 
 </section>
         <section class="bg1 mt10" style="margin-top: 0;border-top: none">
+            <div>
+
+            </div>
             <div class="InsDetails3" style="border-top: none;font-size: 15px;">
-                <?=$kejie['cur_name']?>:
-                <?php foreach($kejie['pp'] as $key=>$val){?>
-                    <br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=$val['chapter']?>
-                    <br/>
-                    <?php foreach($val['pp'] as $k=>$v){?>
-                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <a href="{{URL('bfang')}}?fid=<?=$v['id']?>&cur_id=<?=$curone['cur_id']?>" ids="<?=$v['id']?>" class="bfang"><?=$v['file_name']?></a>
-                    <br/>
-                    <?php }?>
+                <div style="font-size: 18px;">
+                    <?=$kejie['cur_name']?>:
+                        <br/>
+                    课程提纲
+                </div>
+                    <?php foreach($kejie['pp'] as $key=>$val){?>
+                <dl style="text-align: left">
+                    <dt style="font-size: 16px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        ☟<?=$val['chapter']?>
+                    </dt>
+                </dl>
+                <?php foreach($val['pp'] as $k=>$v){?>
+                <dd>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{{URL('bfang')}}?fid=<?=$v['id']?>&cur_id=<?=$curone['cur_id']?>" ids="<?=$v['id']?>" class="bfang"><?=$v['file_name']?></a>
+                </dd>
+                <?php }?>
                 <?php }?>
             </div>
         </section>
