@@ -12,6 +12,8 @@
     <link href="{{asset('style/css/ionic.min.css')}}" rel="stylesheet">
       <link href="{{asset('style/css/main.css')}}" rel="stylesheet" type="text/css" />
       <link href="{{asset('style/css/commons.css')}}" rel="stylesheet" type="text/css" />
+      <link href="{{asset('css/share.css')}}" rel="stylesheet"/>
+      <link href="{{asset('css/index.css')}}" rel="stylesheet"/>
     <script type="text/javascript">
     angular.module('ionicApp', ['ionic'])
     .controller('SlideController', function($scope) {
@@ -33,10 +35,10 @@
 <!--内容-->
 
 <div class="type">
-  <ul>
+  <ul style="text-align: center">
     <li class="allType">全部分类💗</li>
-    <li>最新💗</li>
-    <li>最热💗</li>
+      <a href="{{URL('market')}}?sh=1"><li>最新💗</li></a>
+      <a href="{{URL('market')}}?sh=2"><li>最热💗</li></a>
   </ul>
 </div>
 <div class="Z_con2_2" style="display:none;" id="typeList">
@@ -50,7 +52,7 @@
                 </ul>
             </div>
         </div>
-        <div class="F_wd_top_con2_r" id="wrapper1" style="background:" >
+        <div class="F_wd_top_con2_r" id="wrapper1" style="" >
                 <div class="content">
                     <?php foreach($types as $keys=>$vals){ ?>
                     <ul class="by" style="display: none">
@@ -69,6 +71,53 @@
         </div>
     </div>
 </div>
+    <ion-view title="Home" hide-nav-bar="true">
+        <ion-scroll  direction="y" scrollbar-y="false" style="width: 100%; height: 100%">
+            <div class="NewsList">
+                <ul class="clearfix classul">
+                    <?php foreach($data as $key=>$val){?>
+                    <li>
+                        <div class="bord">
+                            <div class="lt">
+                                <a href="{{URL('cont')}}?cur_id=<?=$val['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?=$val['cur_img']?>" height="50" width='50' alt=""/></a>
+                            </div>
+                            <div class="rt">
+                                <a href="{{URL('cont')}}?cur_id=<?=$val['cur_id']?>" title="">
+                                    <div class="rt1">
+                                        <h3><?=$val['cur_name']?></h3>
+                                        <p></p>
+                                        <a href="javascript:void(0);"><p>讲师：<?=$val['teacher_name']?></p></a>
+                                    </div>
+                                </a>
+                                <div class="rt2">
+                                    <p class="orange">
+                                        <i class="f15 mr5">&yen;</i>
+                                        <i class="f20">
+                                            <?php
+                                            if($val['cur_price']==0)
+                                            {
+                                                echo "<span style='color:green;'>免费</span>";
+                                            }else
+                                            {
+                                                echo $val['cur_price'];
+                                            }
+                                            ?>
+                                        </i>
+                                        <br/>
+                                        <a style="font-size: 25px;" alt="收藏" href="{{URL('collection')}}?cur_id=<?=$val['cur_id']?>">❤</a>
+                                        <?php ?>
+
+                                        <?php ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <?php }?>
+                </ul>
+            </div>
+        </ion-scroll>
+    </ion-view>
 	<!-- 底部-->
     @include('master')
   </body>

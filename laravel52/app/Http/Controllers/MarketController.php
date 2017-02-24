@@ -15,6 +15,7 @@ class MarketController extends Controller{
  * @return [type] [description]
  */
     public function market(){
+        $id=Input::get('sh','');
         $types = DB::table('study_type')->where('type_is_show',1)->where('parent_id','=',0)->get();
         //print_r($types);die;
         foreach($types as $key=>$val){
@@ -28,7 +29,15 @@ class MarketController extends Controller{
 //        print_r($types);
 //        print_r($info);
 //        die;
-        return view('market.market',['types'=>$types]);
+        $cur = new Cur();
+        if($id==1){
+            $data=$cur->searchCurNew("study_cur.cur_is_new");
+        }else if($id==2){
+            $data=$cur->searchCurNew("study_cur.cur_is_heat");
+        }else{
+            $data=$cur->searchCurAll();
+        }
+        return view('market.market',['types'=>$types,'data'=>$data]);
     }
 
     public function curr(){

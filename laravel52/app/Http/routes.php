@@ -38,7 +38,7 @@ Route::get('personal','CenterController@personal_collection');//查看个人收�
 Route::get('del_collect','CenterController@del_collection');//删除个人收藏
 
 
-Route::get('market','MarketController@market');//全部课程分类
+Route::any('market','MarketController@market');//全部课程分类
 Route::get('curr','MarketController@curr');//全部课程分类
 Route::get('cont','MarketController@cont');//课程详情
 Route::get('bfang','MarketController@bfang');//课程详情
