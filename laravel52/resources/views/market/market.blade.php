@@ -1,3 +1,8 @@
+<style>
+  .type ul li{float: left;list-style: none;margin-left: 30px; }
+  .type ul{border: 1px solid #000; height: 30px; line-height: 30px; background:#2894FF;color:#fff;}
+  
+</style>
 <html ng-app="ionicApp">
   <head>
         <meta charset="UTF-8">
@@ -21,25 +26,32 @@
 		    {{--<a class="button button-clear icon ion-android-cart" onclick="history.go(-1);"></a>--}}
 	{{--</div>--}}
 
-<div class="top_tit">
+<div class="top_tit" >
     <span class="top_tit_left" onclick="history.go(-1);"></span>
     <span class="top_tit_center">全部课程</span>
 </div>
 <!--内容-->
 
-
-<div class="Z_con2_2">
-    <div class="F_wd_top_con2">
-        <div class="F_wd_top_con2_l" id="wrapper">
-            <div>
-                <ul class="sy">
+<div class="type">
+  <ul>
+    <li class="allType">全部分类💗</li>
+    <li>最新💗</li>
+    <li>最热💗</li>
+    <li>我们推荐💗</li>
+  </ul>
+</div>
+<div class="Z_con2_2" style="display:none;" id="typeList">
+    <div class="F_wd_top_con2" >
+        <div class="F_wd_top_con2_l" id="wrapper" style="background:#2894FF; color:#fff;">
+            <div >
+                <ul class="sy" >
                     <?php foreach($types as $key=>$val){?>
-                        <li><?php echo $val['type_name']?></li>
+                        <li class="dianji"><?php echo $val['type_name']?></li>
                     <?php }?>
                 </ul>
             </div>
         </div>
-        <div class="F_wd_top_con2_r" id="wrapper1">
+        <div class="F_wd_top_con2_r" id="wrapper1" style="background:" >
                 <div class="content">
                     <?php foreach($types as $keys=>$vals){ ?>
                     <ul class="by" style="display: none">
@@ -65,3 +77,26 @@
 {{--  <script src="{{asset('style/js/ionic.bundle.min.js')}}"></script>--}}
   <script src="{{asset('style/js/common.js')}}" type="text/javascript"></script>
 </html>
+<script>
+   $(function(){
+       $(".allType").click(function(){
+            if( $("#typeList").css("display") == 'none')
+            {
+                //$("#typeList").show();
+                $("#typeList").animate({height: 'toggle', opacity: 'toggle'});
+            }else
+            {
+               $("#typeList").slideUp("slow");
+            }
+       })
+      $(".dianji").on("click",function(){
+       
+        
+             $(this).css("background","#fff");
+             $(this).css("color","#2894FF");
+       
+            $(this).css("background","#2894FF");
+             $(this).css("color","#fff");
+      })
+   })
+</script> 
