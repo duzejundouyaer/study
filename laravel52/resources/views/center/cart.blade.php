@@ -2,7 +2,7 @@
 <head>
         <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>精选课程</title>
+    <title>我的购物车</title>
 
     <link href="{{asset('style/css/ionic.min.css')}}" rel="stylesheet">
 	<link href="{{asset('css/share.css')}}" rel="stylesheet"/>
@@ -110,7 +110,7 @@
 <!--顶部-->
 <div class="bar bar-header bar-positive  " >
 	<a class="button button-clear icon ion-ios-arrow-left" href="#" onClick="javascript:history.back(-1);"></a>
-     <h1 class="title">精选课程</h1>
+     <h1 class="title">我的购物车</h1>
 	 
    </div>
 <!--内容-->   
@@ -186,6 +186,7 @@
               var curPrice = '';
               var curId = '';
               var img = '';
+
              // var courseName = $("#courseName").html();
               $(".courseName").each(function(){
                   courseName+=$(this).html()+',';
@@ -201,6 +202,11 @@
               })
               var _token = "{{csrf_token()}}";
 //              location.href="";
+                if(courseName =='' || img == '' ||curPrice == '' || curId =='')
+                {
+                   alert('请添加购物车');
+                   return false;
+                }
               $.ajax({
                  type: "POST",
                  url: "{{URL('pay')}}",
