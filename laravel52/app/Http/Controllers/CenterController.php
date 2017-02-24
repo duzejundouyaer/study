@@ -22,8 +22,8 @@ class CenterController extends Controller{
     	//$request->session()->put('key', '黄文靖');
     	//$value = $request->session()->pull('key', 'default');
         $session = new Session();
-        $nickname = $session->get('nickname');
-        $arr = DB::table('study_user')->where('nickname',$nickname)->first();
+        $nickname = $session->get('id');
+        $arr = DB::table('study_user')->where('user_id',$nickname)->first();
         return view('center.center',['arr'=>$arr]);
     }
     /**
@@ -40,8 +40,9 @@ class CenterController extends Controller{
              die;
           }else
           {
+              $id =  $session->get('id');
             $User = new User();
-            $Info = $User->infomation($nickname);
+            $Info = $User->infomation($id);
           }
         return view('myinfo.myinfo',['info'=>$Info]);
     }
@@ -57,17 +58,21 @@ class CenterController extends Controller{
              return redirect('login');
              die();
           }else{
-            $request = $request->all();
-            $img = $request['file'];
-            preg_match("/^.*,(.*)$/is",$img,$res);
-            $name = time().rand(100,900);
-            file_put_contents("./style/images/$name.jpg",base64_decode($res[1]));
-            $filename = "./style/images/$name.jpg";
+              $user = new User();
+             $request = $request->all();
+             $img = $request['file'];
             $nickName = $request['nickname'];
             $desc = $request['desc'];
-            $user = new User();
-            $reg = $user->Update_info($nickname,$nickName,$desc,$filename);
-            if($reg == 1)
+            preg_match("/^.*,(.*)$/is",$img,$res);
+            $name = time().rand(100,900);
+            if(!empty($img)){
+                file_put_contents("./style/images/$name.jpg",base64_decode($res[1]));
+                $filename = "./style/images/$name.jpg";
+                $reg = $user->Update_info($nickname,$nickName,$desc,$filename);
+            }else{
+                $reg = $user->Updateinfo($nickname,$nickName,$desc);
+            }
+              if($reg == 1)
             {
                 $session->set('nickname',$nickName);
                 return 0;
