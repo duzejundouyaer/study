@@ -11,16 +11,10 @@
     <script src="{{asset('style/js/ionic.bundle.min.js')}}"></script>
     <script src="{{asset('js/jquery-1.8.0.min.js')}}"></script>
     <script type="text/javascript">
-
         angular.module('ionicApp', ['ionic'])
-
                 .controller('SlideController', function($scope) {
-
                     $scope.myActiveSlide = 0;
-
                 });
-
-
     </script>
     <style type="text/css">
         .lei {
