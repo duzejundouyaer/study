@@ -43,6 +43,7 @@ class LoginController extends Controller{
     {   //echo Crypt::encrypt('k123456');die;
         $tel = Input::get('tel');
         $pwd = Input::get('pwd');
+        $token = Input::get('_token');
         if(empty($tel) || empty($pwd)){
             return back()->with('errors','不能为空！');
         }
