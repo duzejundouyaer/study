@@ -127,7 +127,7 @@
     </ion-scroll>
 </ion-view>
 <div style="text-align: center;">
-    <a href="{{URL('curr')}}" class="more_r more" id="back-to-top">☟查看更多<i></i></a>
+    <a href="{{URL('curr')}}">☟查看更多<i></i></a>
 </div>
 <!-- 底部-->
 </body>
