@@ -117,7 +117,15 @@ $session = new Session();
                          <dd>
                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             <a href="{{URL('bfang')}}?fid=<?=$v['id']?>&cur_id=<?=$curone['cur_id']?>" ids="<?=$v['id']?>" class="bfang"><?=$v['file_name']?></a>
+                             <?php  if($curone['cur_price']!=0){ ?>
+                             <a ids="<?=$v['id']?>" class="bfang">
+                                 <?=$v['file_name']?>
+                             </a>
+                             <?php }else{ ?>
+                             <a href="{{URL('bfang')}}?fid=<?=$v['id']?>&cur_id=<?=$curone['cur_id']?>" ids="<?=$v['id']?>" class="bfang">
+                                 <?=$v['file_name']?>
+                             </a>
+                             <?php }?>
                          </dd>
                     <?php }?>
                 <?php }?>

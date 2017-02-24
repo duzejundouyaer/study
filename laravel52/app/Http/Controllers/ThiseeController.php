@@ -13,8 +13,9 @@ class ThiseeController extends Controller
         //现在时间
         $time=time()+8*60*60;
 
-        $data=DB::table('study_seeding')->join('study_teacher', 'study_teacher.teacher_id','=','study_seeding.teacher_id')->where('study_seeding.begintime','>',$time)->get();//正在播
-//        print_r($data);die;
+        //$data=DB::table('study_seeding')->join('study_teacher', 'study_teacher.teacher_id','=','study_seeding.teacher_id')->where('study_seeding.begintime','>',$time)->get();//正在播
+        $data=DB::table('study_seeding')->join('study_teacher', 'study_teacher.teacher_id','=','study_seeding.teacher_id')->get();//正在播
+        //print_r($data);die;
 //        $cur=new Cur();
 //        $data=$cur->moBod();
         //print_r($data);die;
