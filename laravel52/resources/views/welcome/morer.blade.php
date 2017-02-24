@@ -124,7 +124,7 @@
                  <li>
                     <div class="bord">
                         <div class="lt">
-                            <a href="{{url('cont')}}?cur_id=<?php echo $val['cur_id']?>" title=""><img src="<?php echo $val['cur_img'];?>" height="50px;" width='50px;' alt=""/></a>
+                            <a href="{{url('cont')}}?cur_id=<?php echo $val['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?php echo $val['cur_img'];?>" height="50px;" width='50px;' alt=""/></a>
                         </div>
                         <div class="rt">
                             <a href="#" title="">
