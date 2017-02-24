@@ -8,20 +8,13 @@
     <link href="{{asset('css/share.css')}}" rel="stylesheet"/>
     <link href="{{asset('css/index.css')}}" rel="stylesheet"/>
     <script src="{{asset('js/all.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/layer.js')}}"></script>
     <script src="{{asset('style/js/ionic.bundle.min.js')}}"></script>
     <script src="{{asset('js/jquery-1.8.0.min.js')}}"></script>
     <script type="text/javascript">
-
         angular.module('ionicApp', ['ionic'])
-
                 .controller('SlideController', function($scope) {
-
                     $scope.myActiveSlide = 0;
-
                 });
-
-
     </script>
     <style type="text/css">
         .lei {
@@ -125,7 +118,7 @@
                     <li>
                         <div class="bord">
                             <div class="lt">
-                                <a href="{{URL('cont')}}?cur_id=<?=$val['cur_id']?>" title=""><img src="http://more.com/<?=$val['cur_img']?>" height="50" width='50' alt=""/></a>
+                                <a href="{{URL('cont')}}?cur_id=<?=$val['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?=$val['cur_img']?>" height="50" width='50' alt=""/></a>
                             </div>
                             <div class="rt">
                                 <a href="{{URL('cont')}}?cur_id=<?=$val['cur_id']?>" title="">
