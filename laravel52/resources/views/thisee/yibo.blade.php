@@ -103,7 +103,11 @@
             float: left;}
 
     </style>
+    {{--<link rel="stylesheet" href="http://g.alicdn.com/de/prismplayer/1.4.7/skins/default/index-min.css" />--}}
+    {{--<link rel="stylesheet" href="http://g.alicdn.com/de/prismplayer/1.4.7/skins/default/index.css" />--}}
+    {{--<script type="text/javascript" src="http://g.alicdn.com/de/prismplayer/1.4.7/prism.js"></script>--}}
     <link rel="stylesheet" href="http://g.alicdn.com/de/prismplayer/1.4.7/skins/default/index-min.css" />
+    <script type="text/javascript" src="http://g.alicdn.com/de/prismplayer/1.4.7/prism-h5-min.js"></script>
 </head>
 <body>
 <!--精选课程-->
@@ -128,7 +132,7 @@
 <!-- 底部-->
 @include('master')
 {{--http://live.kjschool.net/app-name/StreamName.m3u8--}}
-<script type="text/javascript" src="http://g.alicdn.com/de/prismplayer/1.4.7/prism-h5-min.js"></script>
+{{--<script type="text/javascript" src="http://g.alicdn.com/de/prismplayer/1.4.7/prism-h5-min.js"></script>--}}
 <script>
     var player = new prismplayer({
         id: "J_prismPlayer", // 容器id
@@ -140,23 +144,3 @@
 </script>
 </body>
 </html>
-{{--<!DOCTYPE HTML>--}}
-{{--<html>--}}
-{{--<head>--}}
-    {{--<meta charset="UTF-8">--}}
-    {{--<link rel="stylesheet" href="http://g.alicdn.com/de/prismplayer/1.4.7/skins/default/index-min.css" />--}}
-    {{--<script type="text/javascript" src="http://g.alicdn.com/de/prismplayer/1.4.7/prism-flash-min.js"></script>--}}
-{{--</head>--}}
-{{--<body>--}}
-{{--<div id='J_prismPlayer' class='prism-player'></div>--}}
-{{--<script>--}}
-    {{--var player = new prismplayer({--}}
-        {{--id: "J_prismPlayer", // 容器id--}}
-        {{--source: "http://live.kjschool.net/app-name/StreamName.flv",  // 视频url 支持互联网可直接访问的视频地址--}}
-        {{--autoplay: true,      // 自动播放--}}
-        {{--width: "100%",       // 播放器宽度--}}
-        {{--height: "400px"      // 播放器高度--}}
-    {{--});--}}
-{{--</script>--}}
-{{--</body>--}}
-{{--</html>--}}

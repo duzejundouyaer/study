@@ -122,7 +122,7 @@
             <a href="{{URL('mogbo')}}">查看未直播视频 ☚</a>
             <ul class="clearfix classul">
              <?php foreach($data as $key=>$val){?>
-                <?php if($val['begintime']<=time()&&$val['endtime']>=time()){?>
+                <?php if($val['begintime']<=time()&&$val['endtime']>time()){?>
                  <li>
                      <div class="bord">
                          <div class="lt">
