@@ -1,5 +1,5 @@
 <style>
-  .type ul li{float: left;list-style: none;margin-left: 30px; }
+  .type ul li{float: left;list-style: none;margin-left: 20px; }
   .type ul{border: 1px solid #000; height: 30px; line-height: 30px; background:#2894FF;color:#fff;}
  a{ text-decoration:none}
 </style>
@@ -37,7 +37,6 @@
     <li class="allType">全部分类💗</li>
     <li>最新💗</li>
     <li>最热💗</li>
-    <li>我们推荐💗</li>
   </ul>
 </div>
 <div class="Z_con2_2" style="display:none;" id="typeList">
