@@ -176,6 +176,10 @@ class CenterController extends Controller{
        $cur_id = $request['cur_id'];
        $session = new Session;
        $nickname = $session->get('nickname');
+       if(!isset($nickname))
+       {
+          echo "<script>alert('请先登录');location.href='login';</script>";
+       }
        $userInfo = DB::table('study_user')->where('nickname', '=',$nickname)->first();
        $ruls =DB::table('study_collect')->where('user_id',$userInfo['user_id'])->where('cur_id',$cur_id)->first();
         if($ruls)
