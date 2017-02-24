@@ -1,7 +1,7 @@
 <style>
   .type ul li{float: left;list-style: none;margin-left: 30px; }
   .type ul{border: 1px solid #000; height: 30px; line-height: 30px; background:#2894FF;color:#fff;}
-  
+ a{ text-decoration:none}
 </style>
 <html ng-app="ionicApp">
   <head>
@@ -59,7 +59,7 @@
                             <li class="F_wd_top_con2_r_borb1 F_wd_top_con2_r_borb2" style="clear: both;border-top: 1px slateblue solid;border-bottom: none"><?=$val['type_name']?>
                                 <ul>
                                     <?php foreach($val['pp'] as $k=>$v){?>
-                                        <li style="float: left"><a href="{{URL('/curr')}}?id=<?=$v['type_id']?>"><?=$v['type_name']?></a></li>
+                                        <li style="float: left" ><a href="{{URL('/curr')}}?id=<?=$v['type_id']?>"><?=$v['type_name']?></a></li>
                                     <?php }?>
                                 </ul>
                             </li>
@@ -83,20 +83,15 @@
             if( $("#typeList").css("display") == 'none')
             {
                 //$("#typeList").show();
-                $("#typeList").animate({height: 'toggle', opacity: 'toggle'});
+                $("#typeList").show();
             }else
             {
-               $("#typeList").slideUp("slow");
+               $("#typeList").hide();
             }
        })
       $(".dianji").on("click",function(){
-       
-        
-             $(this).css("background","#fff");
-             $(this).css("color","#2894FF");
-       
-            $(this).css("background","#2894FF");
-             $(this).css("color","#fff");
+             $(this).css("background","#fff").siblings().css("background","#2894FF");
+             $(this).css("color","#2894FF").siblings().css("color","#fff");
       })
    })
 </script> 
