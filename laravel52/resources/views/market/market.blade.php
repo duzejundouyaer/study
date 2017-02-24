@@ -18,8 +18,6 @@
                 $scope.myActiveSlide = 0;
 
             });
-
-    })
     </script>
       <style>
           .type ul li{float: left;list-style: none;margin-left: 20px; }
@@ -79,7 +77,7 @@
     </div>
 </div>
 
-<div class="NewsList">
+<div class="NewsList" id="wrapper">
     <ul class="clearfix classul">
         <?php foreach($data as $key=>$val){?>
         <li>
@@ -130,10 +128,7 @@
 </div>
 	<!-- 底部-->
   </body>
-    @include('master')
-
   <script src="{{asset('jquery-2.1.1.min.js')}}" type="text/javascript"></script>
-{{--  <script src="{{asset('style/js/ionic.bundle.min.js')}}"></script>--}}
   <script src="{{asset('js/all.js')}}"></script>
   <script src="{{asset('style/js/common.js')}}" type="text/javascript"></script>
 </html>
