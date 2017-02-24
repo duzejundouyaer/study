@@ -9,20 +9,14 @@
       <link href="{{asset('style/css/commons.css')}}" rel="stylesheet" type="text/css" />
       <link href="{{asset('css/share.css')}}" rel="stylesheet"/>
       <link href="{{asset('css/index.css')}}" rel="stylesheet"/>
-    <script type="text/javascript">
       
-        angular.module('ionicApp', ['ionic'])
-
-            .controller('SlideController', function($scope) {
-
-                $scope.myActiveSlide = 0;
-
-            });
-    </script>
       <style>
           .type ul li{float: left;list-style: none;margin-left: 20px; }
           .type ul{border: 1px solid #000; height: 30px; line-height: 30px; background:#2894FF;color:#fff;}
           a{ text-decoration:none}
+          .main{
+            overflow-y: auto;
+          }
       </style>
   </head>
 <body>
@@ -77,6 +71,8 @@
     </div>
 </div>
 
+<div class="main">
+  <div>
 <div class="NewsList" id="wrapper">
     <ul class="clearfix classul">
         <?php foreach($data as $key=>$val){?>
@@ -121,6 +117,8 @@
 
     </ul>
 </div>
+</div>
+</div>
 </ion-scroll>
 </ion-view>
 <div style="text-align: center;">
@@ -130,7 +128,13 @@
   </body>
   <script src="{{asset('jquery-2.1.1.min.js')}}" type="text/javascript"></script>
   <script src="{{asset('js/all.js')}}"></script>
+  
   <script src="{{asset('style/js/common.js')}}" type="text/javascript"></script>
+  <script src="{{asset('js/iscroll.js')}}"></script>
+    <script type="text/javascript">
+      
+        
+    </script>
 </html>
 <script>
    $(function(){
@@ -148,4 +152,10 @@
              $(this).css("color","#2894FF").siblings().css("color","#fff");
       })
    })
+   var myScroll = new IScroll(".main",{
+          scrollbars:true,
+          disableMouse:true,
+          disablePointer:true,
+          scrollbars:'custom'
+        });
 </script> 
