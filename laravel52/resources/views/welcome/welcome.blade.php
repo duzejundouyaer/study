@@ -1,7 +1,8 @@
+
 <html ng-app="ionicApp">
   <head>
         <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>首页</title>
     <link href="{{asset('style/css/ionic.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/share.css')}}" rel="stylesheet"/>
@@ -215,7 +216,7 @@
                      <li>
                     <div class="bord">
                         <div class="lt">
-                            <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
+                            <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
                         </div>
                         <div class="rt">
                             <a href="#" title="">
@@ -257,7 +258,7 @@
                      <li>
                     <div class="bord">
                         <div class="lt">
-                            <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
+                            <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
                         </div>
                         <div class="rt">
                             <a href="#" title="">
@@ -298,7 +299,7 @@
                      <li>
                     <div class="bord">
                         <div class="lt">
-                            <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
+                            <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
                         </div>
                         <div class="rt">
                             <a href="#" title="">
@@ -356,7 +357,7 @@
         var str='';
       console.log(msg);
          for(var i=0;i<msg.length;i++){
-              str+="<div class='NewsList'><ul class='clearfix classul'><li><div class='bord'><div class='lt'><a href='{{URL('cont')}}?cur_id="+msg[i]['cur_id']+"'><img src="+msg[i]['cur_img']+" height='50px;' width='50px;' /></a></div><div class='rt'><a href='#' ><div class='rt1'><h3>"+msg[i]['cur_name']+"</h3><p>"+msg[i]['cur_describe']+"</p></div></a><div class='rt2'><p class='orange'><i class='f15 mr5'>&yen;</i><i class='f20'>"+msg[i]['cur_price']+"</i></p></div></div></div></li></ul></div>";
+              str+="<div class='NewsList'><ul class='clearfix classul'><li><div class='bord'><div class='lt'><a href='{{URL('cont')}}?cur_id="+msg[i]['cur_id']+"'><img src=http://admin.duzejun.cn/"+msg[i]['cur_img']+" height='50px;' width='50px;' /></a></div><div class='rt'><a href='#' ><div class='rt1'><h3>"+msg[i]['cur_name']+"</h3><p>"+msg[i]['cur_describe']+"</p></div></a><div class='rt2'><p class='orange'><i class='f15 mr5'>&yen;</i><i class='f20'>"+msg[i]['cur_price']+"</i></p></div></div></div></li></ul></div>";
        }
         $("#div1").html(str);
     },'json')

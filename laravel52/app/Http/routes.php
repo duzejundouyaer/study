@@ -70,6 +70,6 @@ Route::get('only','LoginController@only');//注册唯一性
 Route::post('checklogin','LoginController@checklogin');//注册唯一性
 Route::any('qqlogin','LoginController@qqlogin');//qq登录
 Route::any('weibo','LoginController@weibo');//微博登录
-Route::any('pay','MarketController@pay');//支付
+Route::post('pay','MarketController@pay');//支付
 Route::any('order','MarketController@order');//支付
 Route::any('result','MarketController@result');//支付

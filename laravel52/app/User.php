@@ -26,7 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+  public function Updateinfo($nickname,$nickName,$desc)
+  {
+      $arr = $this->where('nickname','=',$nickname)->first();
+      $res = $this->where('user_id','=',$arr['user_id'])->update(['nickname'=>$nickName,'user_desc'=>$desc]);
+      return 1;
+  }
     /**
      * 修改个人资料
      */
@@ -41,7 +46,7 @@ class User extends Authenticatable
      */
     public function infomation($nickname)
     {
-        $reg = $this->where('nickname','=',$nickname)->first();
+        $reg = $this->where('user_id','=',$nickname)->first();
         return $reg;
     }
 }

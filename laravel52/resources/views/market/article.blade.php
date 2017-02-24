@@ -45,7 +45,7 @@ $session = new Session();
     <ion-scroll  direction="y" scrollbar-y="false" style="width: 100%; height: 100%">
 <section>
     <div class="nxqalbum" style="margin-top: 45px;">
-        <img src="http://more.com<?=$curone['cur_img']?>" data-original="" class="nxqtopimg sw_loading" />
+        <img src="http://admin.duzejun.cn/<?=$curone['cur_img']?>" data-original="" class="nxqtopimg sw_loading" />
         <div style="position: absolute;width: 100%;height: 40px;bottom:0;left: 0;background: rgba(0,0,0,0.5)">
             <div class="imgInto" style="color: #f6fdfd">
                 <p><?=$curone['cur_name']?></p>

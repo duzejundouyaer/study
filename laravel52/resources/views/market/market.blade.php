@@ -131,6 +131,7 @@
 	<!-- 底部-->
   </body>
     @include('master')
+
   <script src="{{asset('jquery-2.1.1.min.js')}}" type="text/javascript"></script>
 {{--  <script src="{{asset('style/js/ionic.bundle.min.js')}}"></script>--}}
   <script src="{{asset('js/all.js')}}"></script>
