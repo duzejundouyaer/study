@@ -222,7 +222,7 @@
                             <a href="#" title="">
                                 <div class="rt1">
                                     <h3><?php echo $value['cur_name'] ?></h3>
-                                    <p><?php echo $value['cur_describe'] ?></p>
+                                    <p><?php echo mb_substr($value['cur_describe'],0,20,"UTF-8") ?>......</p>
                                    <!--  <p>武汉武昌区中北路 | 详细地图</p> -->
                                     <!-- <a href="javascript:void(0)027-86730762"><p>027-86730762</p></a> -->
                                </div>
@@ -264,7 +264,7 @@
                             <a href="#" title="">
                                 <div class="rt1">
                                     <h3><?php echo $value['cur_name'] ?></h3>
-                                    <p><?php echo $value['cur_describe'] ?></p>
+                                    <p><?php echo mb_substr($value['cur_describe'],0,20,"UTF-8") ?>......</p>
                                    <!--  <p>武汉武昌区中北路 | 详细地图</p> -->
                                     <!-- <a href="javascript:void(0)027-86730762"><p>027-86730762</p></a> -->
                                </div>
@@ -305,7 +305,7 @@
                             <a href="#" title="">
                                 <div class="rt1">
                                     <h3><?php echo $value['cur_name'] ?></h3>
-                                    <p><?php echo $value['cur_describe'] ?></p>
+                                    <p><?php echo mb_substr($value['cur_describe'],0,20,"UTF-8") ?>......</p>
                                   
                                </div>
                             </a>
@@ -357,7 +357,7 @@
         var str='';
       console.log(msg);
          for(var i=0;i<msg.length;i++){
-              str+="<div class='NewsList'><ul class='clearfix classul'><li><div class='bord'><div class='lt'><a href='{{URL('cont')}}?cur_id="+msg[i]['cur_id']+"'><img src=http://admin.duzejun.cn/"+msg[i]['cur_img']+" height='50px;' width='50px;' /></a></div><div class='rt'><a href='#' ><div class='rt1'><h3>"+msg[i]['cur_name']+"</h3><p>"+msg[i]['cur_describe']+"</p></div></a><div class='rt2'><p class='orange'><i class='f15 mr5'>&yen;</i><i class='f20'>"+msg[i]['cur_price']+"</i></p></div></div></div></li></ul></div>";
+              str+="<div class='NewsList'><ul class='clearfix classul'><li><div class='bord'><div class='lt'><a href='{{URL('cont')}}?cur_id="+msg[i]['cur_id']+"'><img src=http://admin.duzejun.cn/"+msg[i]['cur_img']+" height='50px;' width='50px;' /></a></div><div class='rt'><a href='#' ><div class='rt1'><h3>"+msg[i]['cur_name']+"</h3><p>"+msg[i]['cur_describe'].substr(0,20)+"......</p></div></a><div class='rt2'><p class='orange'><i class='f15 mr5'>&yen;</i><i class='f20'>"+msg[i]['cur_price']+"</i></p></div></div></div></li></ul></div>";
        }
         $("#div1").html(str);
     },'json')
