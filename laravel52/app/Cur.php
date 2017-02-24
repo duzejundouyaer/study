@@ -44,8 +44,15 @@ class Cur extends Model
     public function searchCurAll(){
         return DB::table($this->table)->join('study_teacher', 'study_cur.teacher_id', '=','study_teacher.teacher_id')->select('study_cur.cur_id','study_cur.cur_name','study_cur.cur_img','study_cur.cur_price','study_teacher.teacher_id','study_teacher.teacher_name')->orderBy('cur_id','desc')->skip(0)->take(10)->get();
     }
+    //查询所有
+    public function searchCurAlls(){
+        return DB::table($this->table)->join('study_teacher', 'study_cur.teacher_id', '=','study_teacher.teacher_id')->select('study_cur.cur_id','study_cur.cur_name','study_cur.cur_img','study_cur.cur_price','study_teacher.teacher_id','study_teacher.teacher_name')->orderBy('cur_id','desc')->skip(0)->take(4)->get();
+    }
     //查询最新 &&最热
     public function searchCurNew($newhot="study_cur.cur_is_new"){
         return DB::table($this->table)->where($newhot,1)->join('study_teacher', 'study_cur.teacher_id', '=','study_teacher.teacher_id')->select('study_cur.cur_id','study_cur.cur_name','study_cur.cur_img','study_cur.cur_price','study_teacher.teacher_id','study_teacher.teacher_name')->get();
+    }
+    public function searchCurNum($num,$nums){
+        return DB::table($this->table)->join('study_teacher', 'study_cur.teacher_id', '=','study_teacher.teacher_id')->select('study_cur.cur_id','study_cur.cur_name','study_cur.cur_img','study_cur.cur_price','study_teacher.teacher_id','study_teacher.teacher_name')->orderBy('cur_id','desc')->skip($num)->take($nums)->get();
     }
 }

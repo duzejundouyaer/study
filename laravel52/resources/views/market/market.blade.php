@@ -79,55 +79,59 @@
     </div>
 </div>
 
-<div class="NewsList">
-    <ul class="clearfix classul">
-        <?php foreach($data as $key=>$val){?>
-        <li>
-            <div class="bord">
-                <div class="lt">
-                    <a href="{{URL('cont')}}?cur_id=<?=$val['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?=$val['cur_img']?>" height="50" width='50' alt=""/></a>
-                </div>
-                <div class="rt">
-                    <a href="{{URL('cont')}}?cur_id=<?=$val['cur_id']?>" title="">
-                        <div class="rt1">
-                            <h3><?=$val['cur_name']?></h3>
-                            <p></p>
-                            <a href="javascript:void(0);"><p>讲师：<?=$val['teacher_name']?></p></a>
+
+        <div id="bodyss">
+            <div class="NewsList">
+                <ul class="clearfix classul">
+                    <?php foreach($data as $key=>$val){?>
+                    <li>
+                        <div class="bord">
+                            <div class="lt">
+                                <a href="{{URL('cont')}}?cur_id=<?=$val['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?=$val['cur_img']?>" height="50" width='50' alt=""/></a>
+                            </div>
+                            <div class="rt">
+                                <a href="{{URL('cont')}}?cur_id=<?=$val['cur_id']?>" title="">
+                                    <div class="rt1">
+                                        <h3><?=$val['cur_name']?></h3>
+                                        <p></p>
+                                        <a href="javascript:void(0);"><p>讲师：<?=$val['teacher_name']?></p></a>
+                                    </div>
+                                </a>
+                                <div class="rt2">
+                                    <p class="orange">
+                                        <i class="f15 mr5">&yen;</i>
+                                        <i class="f20">
+                                            <?php
+                                            if($val['cur_price']==0)
+                                            {
+                                                echo "<span style='color:green;'>免费</span>";
+                                            }else
+                                            {
+                                                echo $val['cur_price'];
+                                            }
+                                            ?>
+                                        </i>
+                                        <br/>
+                                        <a style="font-size: 25px;" alt="收藏" href="{{URL('collection')}}?cur_id=<?=$val['cur_id']?>">❤</a>
+                                        <?php ?>
+
+                                        <?php ?>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                    </a>
-                    <div class="rt2">
-                        <p class="orange">
-                            <i class="f15 mr5">&yen;</i>
-                            <i class="f20">
-                                <?php
-                                if($val['cur_price']==0)
-                                {
-                                    echo "<span style='color:green;'>免费</span>";
-                                }else
-                                {
-                                    echo $val['cur_price'];
-                                }
-                                ?>
-                            </i>
-                            <br/>
-                            <a style="font-size: 25px;" alt="收藏" href="{{URL('collection')}}?cur_id=<?=$val['cur_id']?>">❤</a>
-                            <?php ?>
+                    </li>
+                    <?php }?>
 
-                            <?php ?>
-                        </p>
-                    </div>
-                </div>
+                </ul>
             </div>
-        </li>
-        <?php }?>
-
-    </ul>
-</div>
+            <div style="text-align: center;">
+                <a href="{{URL('curr')}}">☟《《查看更多》》<i></i></a>
+            </div>
+        </div>
 </ion-scroll>
 </ion-view>
-<div style="text-align: center;">
-    <a href="javascript:void(0)" class="more_r more" id="back-to-top">☟查看更多<i></i></a>
-</div>
+
 	<!-- 底部-->
   </body>
     @include('master')
@@ -143,9 +147,11 @@
             if( $("#typeList").css("display") == 'none')
             {
                 $("#typeList").show();
+                $("#bodyss").hide();
             }else
             {
                $("#typeList").hide();
+               $("#bodyss").show();
             }
        })
       $(".dianji").on("click",function(){
