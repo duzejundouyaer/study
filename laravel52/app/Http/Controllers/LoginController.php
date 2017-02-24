@@ -150,7 +150,6 @@ class LoginController extends Controller{
     {
         date_default_timezone_set('PRC');
         $token = Input::get('token');
-
         $open_id = file_get_contents('https://graph.qq.com/oauth2.0/me?access_token='.$token);
         $pre = '#callback\((.*)\)#isU';
         preg_match($pre,$open_id,$user);
@@ -245,6 +244,8 @@ class LoginController extends Controller{
         if($re){
             $session = new Session();
             $session->set('nickname',$name);
+            $last_id = DB::insertGetId();
+            $session->set('id',$last_id);
             return redirect('/');
         }else{
             return redirect('regist');
