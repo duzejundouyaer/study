@@ -186,6 +186,7 @@
               var curPrice = '';
               var curId = '';
               var img = '';
+
              // var courseName = $("#courseName").html();
               $(".courseName").each(function(){
                   courseName+=$(this).html()+',';
@@ -201,6 +202,11 @@
               })
               var _token = "{{csrf_token()}}";
 //              location.href="";
+                if(courseName =='' || img == '' ||curPrice == '' || curId =='')
+                {
+                   alert('请添加购物车');
+                   return false;
+                }
               $.ajax({
                  type: "POST",
                  url: "{{URL('pay')}}",

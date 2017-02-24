@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.5" charset="utf-8"/>
     <title>详情页</title>
     <link href="{{asset('style/css/ionic.min.css')}}" rel="stylesheet">
+<<<<<<< HEAD
+      <link href="{{asset('style/css/main.css')}}" rel="stylesheet" type="text/css" />
+      <link href="{{asset('style/css/commons.css')}}" rel="stylesheet" type="text/css" />
+      <link href="{{asset('css/share.css')}}" rel="stylesheet"/>
+      <link href="{{asset('css/index.css')}}" rel="stylesheet"/>
+      
+      <style>
+          .type ul li{float: left;list-style: none;margin-left: 20px; }
+          .type ul{border: 1px solid #000; height: 30px; line-height: 30px; background:#2894FF;color:#fff;}
+          a{ text-decoration:none}
+          .main{
+            overflow-y: auto;
+          }
+      </style>
+  </head>
+=======
     <link href="{{asset('style/css/main.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('style/css/commons.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('css/share.css')}}" rel="stylesheet"/>
@@ -25,6 +41,7 @@
         a{ text-decoration:none}
     </style>
 </head>
+>>>>>>> 1cf78f7951f8de55b35f101157387ae95ebb5c21
 <body>
 <!--顶部-->
 {{--<div class="bar bar-header bar-positive  ">--}}
@@ -77,6 +94,24 @@
             </div>
         </div>
 
+<<<<<<< HEAD
+<div class="main">
+  <div>
+<div class="NewsList" id="wrapper">
+    <ul class="clearfix classul">
+        <?php foreach($data as $key=>$val){?>
+        <li>
+            <div class="bord">
+                <div class="lt">
+                    <a href="{{URL('cont')}}?cur_id=<?=$val['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?=$val['cur_img']?>" height="50" width='50' alt=""/></a>
+                </div>
+                <div class="rt">
+                    <a href="{{URL('cont')}}?cur_id=<?=$val['cur_id']?>" title="">
+                        <div class="rt1">
+                            <h3><?=$val['cur_name']?></h3>
+                            <p></p>
+                            <a href="javascript:void(0);"><p>讲师：<?=$val['teacher_name']?></p></a>
+=======
         <div id="qq">
             <div class="NewsList" id="wrapper">
                 <ul class="clearfix classul">
@@ -116,6 +151,7 @@
                                     </p>
                                 </div>
                             </div>
+>>>>>>> 1cf78f7951f8de55b35f101157387ae95ebb5c21
                         </div>
                     </li>
                     <?php }?>
@@ -124,17 +160,39 @@
             </div>
         </div>
 
+<<<<<<< HEAD
+    </ul>
+</div>
+</div>
+</div>
+</ion-scroll>
+=======
     </ion-scroll>
+>>>>>>> 1cf78f7951f8de55b35f101157387ae95ebb5c21
 </ion-view>
 <div style="text-align: center;">
-    <a href="{{URL('curr')}}" class="more_r more" id="back-to-top">☟查看更多<i></i></a>
+    <a href="{{URL('curr')}}">☟查看更多<i></i></a>
 </div>
+<<<<<<< HEAD
+	<!-- 底部-->
+  </body>
+  <script src="{{asset('jquery-2.1.1.min.js')}}" type="text/javascript"></script>
+  <script src="{{asset('js/all.js')}}"></script>
+  
+  <script src="{{asset('style/js/common.js')}}" type="text/javascript"></script>
+  <script src="{{asset('js/iscroll.js')}}"></script>
+    <script type="text/javascript">
+      
+        
+    </script>
+=======
 <!-- 底部-->
 </body>
 @include('master')
 <script src="{{asset('jquery-2.1.1.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('js/all.js')}}"></script>
 <script src="{{asset('style/js/common.js')}}" type="text/javascript"></script>
+>>>>>>> 1cf78f7951f8de55b35f101157387ae95ebb5c21
 </html>
 <script>
     $(function(){
@@ -148,10 +206,25 @@
                 $("#typeList").hide();
                 $("#qq").show();
             }
+<<<<<<< HEAD
+       })
+      $(".dianji").on("click",function(){
+             $(this).css("background","#fff").siblings().css("background","#2894FF");
+             $(this).css("color","#2894FF").siblings().css("color","#fff");
+      })
+   })
+   var myScroll = new IScroll(".main",{
+          scrollbars:true,
+          disableMouse:true,
+          disablePointer:true,
+          scrollbars:'custom'
+        });
+=======
         })
         $(".dianji").on("click",function(){
             $(this).css("background","#fff").siblings().css("background","#2894FF");
             $(this).css("color","#2894FF").siblings().css("color","#fff");
         })
     })
+>>>>>>> 1cf78f7951f8de55b35f101157387ae95ebb5c21
 </script> 
