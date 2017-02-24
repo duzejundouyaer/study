@@ -112,7 +112,7 @@
     <ion-scroll  direction="y" scrollbar-y="false" style="width: 100%; height: 100%">
 
         <div style="width:70px;height:70px;"></div>
-        <div class="NewsList">
+        <div class="NewsList" style="margin-bottom: 55px;">
             <ul class="clearfix classul">
                 <?php foreach($data as $key=>$val){?>
                     <li>
@@ -153,32 +153,94 @@
                         </div>
                     </li>
                 <?php }?>
+
             </ul>
+            <div style="text-align: center;">
+                <span id="begin" ids="5">☟《《查看更多》》<i></i></span>
+            </div>
         </div>
-        {{--<div id="page">--}}
-            {{--{{$data->links()}}--}}
-        {{--</div>--}}
-        {{--@include('partials.pagination')--}}
-        {{--<section class="indexMore bgf6 bb clearfix">--}}
-            {{--<div class="pl15 mypage">--}}
-                {{--<span class="hover">1</span>--}}
-                {{--<a href="javascript:void(0);">2</a>--}}
-                {{--<a href="javascript:void(0);">3</a>--}}
-                {{--<a href="javascript:void(0);">4</a>--}}
-                {{--<a>...</a>--}}
-                {{--<a href="javascript:void(0)/wuhan/kc-p_50" >50</a>--}}
-                {{--<a  href="javascript:void(0)/wuhan/kc-p_2" class="pl10 pr10">下一页<i class="pl5 fm2"></i></a>--}}
-                {{--<a href="javascript:void(0)javascript:void(0)" class="more_r more" id="back-to-top">回到顶部<i></i></a>--}}
-            {{--</div>--}}
-        {{--</section>--}}
-        {{--<div style="height:50px;width:100%;clear:all"></div>--}}
+
     </ion-scroll>
 </ion-view>
 
 <!-- 底部-->
 @include('master')
 
+<script>
+    $(document).ready(function(){
+        $("#begin").click(function(){
+            var num=$(this).attr('ids');
+            var nums=parseInt(num)+parseInt(5);
+            //alert(nums);
+            var _token="{{csrf_token()}}";
+            $.ajax({
+                type: "POST",
+                url: "{{URL('laidian')}}",
+                data: {nums:nums,_token:_token},
+                dataType: "json",
+                success: function(msg){
+                    //alert(msg);
 
+                    var str="";
+                    for(i in msg){
+//                        str+='<li> <div class="bord"> <div class="lt"> ' +
+//                        '<a href="cont?cur_id"'+msg[i].cur_id+'"><img src="http://admin.duzejun.cn/"'+msg[i].cur_img+'" height="50" width="50"/></a> ' +
+//                        '</div> <div class="rt"> <a href="cont?cur_id"'+msg[i].cur_id+'> <div class="rt1"> <h3> '+msg[i].cur_name+'</h3> ' +
+//                        '<p></p> ' +
+//                        '<a href="javascript:void(0);"><p>讲师： '+msg[i].teacher_name+'</p></a> ' +
+//                        '</div> ' +
+//                        '</a> ' +
+//                        '<div class="rt2"> ' +
+//                        '<p class="orange"> ' +
+//                        '<i class="f15 mr5">&yen;</i> ' +
+//                        '<i class="f20">';
+//                                if(msg[i].cur_price==0){
+//                                    str+="<span style='color:green;'>免费</span>";
+//                                }else{
+//                                    str+=msg[i].cur_price
+//                                }
+//                        str+='</i> ' +
+//                        '<br/> <a style="font-size: 25px;" alt="收藏" href="?cur_id=">❤</a> </p>' +
+//                        ' </div> </div>' +
+//                        ' </div>' +
+//                        ' </li>';
+                        str+="<li><div class='bord'>" +
+                        "<div class='lt'>" +
+                        "<a href='{{URL('cont')}}?cur_id="+msg[i]['cur_id']+"'>" +
+                        "<img src=http://admin.duzejun.cn/"+msg[i]['cur_img']+" height='50px;' width='50px;' />" +
+                        "</a>" +
+                        "</div><div class='rt1'>" +
+                        "<a href='#' >" +
+                        "<div class='rt1'>" +
+                        "<h3>"+msg[i]['cur_name']+"</h3>" +
+                        "<p></p>" +
+                        "<p>讲师："+msg[i]['teacher_name']+"</p>" +
+                        "</div>" +
+                        "</a>" +
+                        "<div class='rt2'>" +
+                        "<p class='orange'>" +
+                        "<i class='f15 mr5'>&yen;</i>" ;
+                        if(msg[i].cur_price==0){
+                            str+="<span style='color:green;'>免费</span>";
+                        }else{
+                            str+=msg[i].cur_price;
+                        }
+                        str+="</i>" +
+                        "</p>" +
+                        "<br/> <a style='font-size: 25px;' href='?cur_id='>❤</a> </p>"+
+                        "</div>" +
+                        "</div>" +
+                        "</div>" +
+                        "</li>";
+                    }
+                    $(".clearfix").append(str);
+
+                }
+            });
+        });
+
+    })
+</script>
 </body>
 </html>
 

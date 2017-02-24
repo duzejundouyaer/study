@@ -7,6 +7,7 @@ use DB;
 use App\User;
 use App\Cur;
 use App\Cart;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 class MarketController extends Controller{
 
@@ -35,18 +36,30 @@ class MarketController extends Controller{
         }else if($id==2){
             $data=$cur->searchCurNew("study_cur.cur_is_heat");
         }else{
-            $data=$cur->searchCurAll();
+            $data=$cur->searchCurAlls();
         }
         return view('market.market',['types'=>$types,'data'=>$data]);
     }
 
     public function curr(){
-        $id=Input::get('id');
+        $id=Input::get('id','');
         //echo $id;
         $cur = new Cur();
-        $data=$cur->searchCurType($id);
+        if($id==""){
+            $data=$cur->searchCurAll();
+        }else{
+            $data=$cur->searchCurType($id);
+        }
 //        print_r($data);
         return view('market.list',['data'=>$data]);
+    }
+    //点击查看
+    public function laidian(Request $request){
+        $nums=$request->get('nums','');
+        $cur = new Cur();
+        $num=$nums-5;
+        $data=$cur->searchCurNum($num,$nums);
+        return json_encode($data);
     }
 //    //////详情页
 //    public function cont(){
