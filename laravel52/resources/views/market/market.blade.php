@@ -203,8 +203,8 @@
     <a href="javascript:void(0)" class="more_r more" id="back-to-top">☟查看更多<i></i></a>
 </div>
 	<!-- 底部-->
-    @include('master')
   </body>
+  @include('master')
   <script src="{{asset('jquery-2.1.1.min.js')}}" type="text/javascript"></script>
 {{--  <script src="{{asset('style/js/ionic.bundle.min.js')}}"></script>--}}
   <script src="{{asset('js/all.js')}}"></script>
