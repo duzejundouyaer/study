@@ -18,8 +18,6 @@
                 $scope.myActiveSlide = 0;
 
             });
-
-    })
     </script>
       <style>
           .type ul li{float: left;list-style: none;margin-left: 20px; }
@@ -119,6 +117,22 @@
                                     </p>
                                 </div>
                             </div>
+
+<div class="NewsList" id="wrapper">
+    <ul class="clearfix classul">
+        <?php foreach($data as $key=>$val){?>
+        <li>
+            <div class="bord">
+                <div class="lt">
+                    <a href="{{URL('cont')}}?cur_id=<?=$val['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?=$val['cur_img']?>" height="50" width='50' alt=""/></a>
+                </div>
+                <div class="rt">
+                    <a href="{{URL('cont')}}?cur_id=<?=$val['cur_id']?>" title="">
+                        <div class="rt1">
+                            <h3><?=$val['cur_name']?></h3>
+                            <p></p>
+                            <a href="javascript:void(0);"><p>讲师：<?=$val['teacher_name']?></p></a>
+
                         </div>
                     </li>
                     <?php }?>
@@ -134,10 +148,7 @@
 
 	<!-- 底部-->
   </body>
-    @include('master')
-
   <script src="{{asset('jquery-2.1.1.min.js')}}" type="text/javascript"></script>
-{{--  <script src="{{asset('style/js/ionic.bundle.min.js')}}"></script>--}}
   <script src="{{asset('js/all.js')}}"></script>
   <script src="{{asset('style/js/common.js')}}" type="text/javascript"></script>
 </html>

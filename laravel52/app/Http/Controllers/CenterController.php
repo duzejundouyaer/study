@@ -211,6 +211,7 @@ class CenterController extends Controller{
        {
            $collect = new Collect();
            $cur = $collect->getCol($nickname);
+           $arr = array();
            foreach ($cur as $key => $value)
            {
                $arr[]=$value['cur_id'];
