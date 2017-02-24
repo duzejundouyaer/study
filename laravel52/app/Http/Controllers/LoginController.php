@@ -176,7 +176,7 @@ class LoginController extends Controller{
             );
             $re = DB::table('study_user')->insert($user);
             if($re){
-                $user_id = DB::insertGetId();
+                $user_id = DB::table('study_user')->insertGetId();
                 $session = new Session;
                 $session->set('nickname',$userinfo['name']);
                 $session->set('id',$user_id);
@@ -244,7 +244,7 @@ class LoginController extends Controller{
         if($re){
             $session = new Session();
             $session->set('nickname',$name);
-            $last_id = DB::insertGetId();
+            $last_id = DB::table('study_user')->insertGetId();
             $session->set('id',$last_id);
             return redirect('/');
         }else{

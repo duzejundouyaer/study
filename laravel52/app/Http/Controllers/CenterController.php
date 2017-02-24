@@ -131,8 +131,7 @@ class CenterController extends Controller{
       if(empty($nickname)) {
           return redirect('login');
       } else
-   
-       {
+      {
         $order = new Order();
         $orders = $order->orderList($nickname);
         return view('center/orderList',['orders'=>$orders]);

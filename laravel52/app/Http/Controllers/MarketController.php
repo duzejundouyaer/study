@@ -68,7 +68,6 @@ class MarketController extends Controller{
         if($name!=""){
             $user = DB::table('study_user')->where('nickname', '=',$name)->first();
             $user_id = $user['user_id'];
-
             $res=DB::table('study_order')->where('cur_id',$id)->where('user_id',$user_id)->where('status',1)->first();
             if($res){
                 $curone['cur_price']=0;

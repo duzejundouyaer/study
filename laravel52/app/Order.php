@@ -15,7 +15,7 @@ class Order extends Model
     public function orderList($nickname)
     {
         $userInfo = DB::table('study_user')->where('nickname', '=',$nickname)->first();
-        $orderData = $this->where('user_id',$userInfo['user_id'])->get()->toArray();
+        $orderData = $this->where('user_id',$userInfo['user_id'])->where('status','1')->get()->toArray();
         return $orderData;
     }
 }
