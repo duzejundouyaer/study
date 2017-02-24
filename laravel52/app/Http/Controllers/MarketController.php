@@ -93,8 +93,6 @@ class MarketController extends Controller{
     }
     ///加入购物车
      public function shopcart(){
-         $session = new Session;
-         $nickname = $session->get('nickname');
              $id=Input::get("id");
              $cart = new Cart();
              $session = new Session;
