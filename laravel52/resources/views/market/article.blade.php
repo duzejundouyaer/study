@@ -207,7 +207,9 @@ $(function(){
             alert('请登录');
             location.href="{{URL('login')}}";
             return false;
-          }
+          }else
+          {
+            
             $.post("{{URL('addcart')}}",{'_token':'{{csrf_token()}}','id':id},function(data){
                 if(data.status == 0){
     //                location.href = location.href;
@@ -217,6 +219,7 @@ $(function(){
                      $("#addCart").attr("disabled", true);
                 }
             });
+          }
      
     }
     //查看购物车
