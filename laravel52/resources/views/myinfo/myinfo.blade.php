@@ -94,7 +94,7 @@
 				   data: {nickname:nickname,desc:desc,_token:_token,file:file},
 				   success: function(msg){
 					   	if(msg==0){
-                            window.location.reload();
+                            location.href='center';
 //					   		$("#info").css("color","green");
 //					    	$("#info").html("修改成功");
 //
