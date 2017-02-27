@@ -126,7 +126,7 @@
                  <li>
                      <div class="bord">
                          <div class="lt">
-                             <a href="{{URL('begbo')}}?id=<?=$val['id']?>" title=""><img src="http://admin.dazejun.cn/<?=$val['photo']?>" height="50" width='50' alt=""/></a>
+                             <a href="{{URL('begbo')}}?id=<?=$val['id']?>" title=""><img src="http://admin.duzejun.cn/<?=$val['photo']?>" height="50" width='50' alt=""/></a>
                          </div>
                          <div class="rt1">
                              <a href="{{URL('begbo')}}?id=<?=$val['id']?>" title="">
