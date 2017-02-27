@@ -133,10 +133,10 @@ class LoginController extends Controller{
             );
             $re = DB::table('study_user')->insert($user);
             if($re){
-                $user_id = DB::insertGetId();
                 $session = new Session;
                 $session->set('nickname',$userinfo['name']);
-                $session->set('id',$user_id);
+                $user_id = DB::table('study_user')->where('nickname',$userinfo['name'])->first();
+                $session->set('id',$user_id['user_id']);
                 return redirect('/');
             }else{
                 return redirect('login');
@@ -176,10 +176,10 @@ class LoginController extends Controller{
             );
             $re = DB::table('study_user')->insert($user);
             if($re){
-                $user_id = DB::table('study_user')->insertGetId();
+                $user_id = DB::table('study_user')->where('nickname',$users['nickname'])->first();
                 $session = new Session;
-                $session->set('nickname',$userinfo['name']);
-                $session->set('id',$user_id);
+                $session->set('nickname',$users['nickname']);
+                $session->set('id',$user_id['user_id']);
                 return redirect('/');
             }else{
                 return redirect('login');
@@ -244,8 +244,8 @@ class LoginController extends Controller{
         if($re){
             $session = new Session();
             $session->set('nickname',$name);
-            $last_id = DB::table('study_user')->insertGetId();
-            $session->set('id',$last_id);
+            $user_id = DB::table('study_user')->where('nickname',$name)->first();
+            $session->set('id',$user_id['user_id']);
             return redirect('/');
         }else{
             return redirect('regist');

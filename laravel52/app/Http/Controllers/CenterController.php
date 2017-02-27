@@ -134,7 +134,7 @@ class CenterController extends Controller{
       {
         $order = new Order();
         $orders = $order->orderList($nickname);
-        return view('center/orderList',['orders'=>$orders]);
+        return view('center.orderList',['orders'=>$orders]);
        }
    }
    /**
