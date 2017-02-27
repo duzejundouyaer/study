@@ -108,17 +108,17 @@
       text-align: center; 
       font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: 300; }
     .a {
-      background-image: url(style/img/001.jpg);
+      background-image: url(style/img/lun1.jpg);
       background-size: 100% 100% ;
     }
 
     .b {
-      background-image: url(style/img/002.jpg);
+      background-image: url(style/img/lun2.jpg);
       background-size: 100% 100% ;
     }
 
     .c {
-      background-image: url(style/img/003.jpg);
+      background-image: url(style/img/lun3.jpg);
       background-size: 100% 100% ;
     }
         .box{ 
@@ -206,49 +206,46 @@
 
     <p></p>
 
-      <div>
-         <p style="background-color:#99BBFF  ">付费课程</p>
-        <?php foreach ($str as $key => $value) {?>
-          
-        
-              <div class="NewsList">
-                 <ul class="clearfix classul">    
-                     <li>
-                    <div class="bord">
-                        <div class="lt">
-                            <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
-                        </div>
-                        <div class="rt">
-                            <a href="#" title="">
-                                <div class="rt1">
-                                    <h3><?php echo $value['cur_name'] ?></h3>
-                                    <p><?php echo mb_substr($value['cur_describe'],0,20,"UTF-8") ?>......</p>
-                                   <!--  <p>武汉武昌区中北路 | 详细地图</p> -->
-                                    <!-- <a href="javascript:void(0)027-86730762"><p>027-86730762</p></a> -->
-                               </div>
-                            </a>
-                            <?php if ($value['cur_price']==0){?>
-                            <div class="rt2">
-                                 <p class="green"><i class="f15 mr5">&yen;</i><i class="f20"><span style='color:green'>免费</span></i></p>
-                             
-                           </div>
-                           <?php }else{ ?>
-                              <div class="rt2">
-                                <p class="orange"><i class="f15 mr5">&yen;</i><i class="f20"><?php echo $value['cur_price']?></i></p>
-                             
-                           </div>
-                          <?php }?>
-                        </div>
-                      </div>
-                   </li>
-                 </ul>
-                 
-                 
-  </div>
-  <?php }?>
-      </div>
+        <div>
+            <p style="background-color:#99BBFF  ">精选课程</p>
+            <?php foreach ($res as $key => $value) {?>
 
-       <div>
+
+            <div class="NewsList">
+                <ul class="clearfix classul">
+                    <li>
+                        <div class="bord">
+                            <div class="lt">
+                                <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
+                            </div>
+                            <div class="rt">
+                                <a href="#" title="">
+                                    <div class="rt1">
+                                        <h3><?php echo $value['cur_name'] ?></h3>
+                                        <p><?php echo mb_substr($value['cur_describe'],0,20,"UTF-8") ?>......</p>
+
+                                    </div>
+                                </a>
+                                <?php if ($value['cur_price']==0){?>
+                                <div class="rt2">
+                                    <p class="green"><i class="f15 mr5">&yen;</i><i class="f20">免费</i></p>
+
+                                </div>
+                                <?php }else{ ?>
+                                <div class="rt2">
+                                    <p class="orange"><i class="f15 mr5">&yen;</i><i class="f20"><?php echo $value['cur_price']?></i></p>
+
+                                </div>
+                                <?php }?>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <?php }?>
+        </div>
+
+        <div>
          <p style="background-color:#99BBFF  ">免费课程</p>
         <?php foreach ($re as $key => $value) {?>
           
@@ -289,44 +286,47 @@
   </div>
   <?php }?>
       </div>
-      <div>
-         <p style="background-color:#99BBFF  ">精选课程</p>
-        <?php foreach ($res as $key => $value) {?>
-          
-        
-              <div class="NewsList">
-                 <ul class="clearfix classul">    
-                     <li>
-                    <div class="bord">
-                        <div class="lt">
-                            <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
+
+        <div>
+            <p style="background-color:#99BBFF  ">付费课程</p>
+            <?php foreach ($str as $key => $value) {?>
+            <div class="NewsList">
+                <ul class="clearfix classul">
+                    <li>
+                        <div class="bord">
+                            <div class="lt">
+                                <a href="{{url('cont')}}?cur_id=<?php echo $value['cur_id']?>" title=""><img src="http://admin.duzejun.cn/<?php echo $value['cur_img'] ?>" height="50px;" width='50px;' alt=""/></a>
+                            </div>
+                            <div class="rt">
+                                <a href="#" title="">
+                                    <div class="rt1">
+                                        <h3><?php echo $value['cur_name'] ?></h3>
+                                        <p><?php echo mb_substr($value['cur_describe'],0,20,"UTF-8") ?>......</p>
+                                        <!--  <p>武汉武昌区中北路 | 详细地图</p> -->
+                                        <!-- <a href="javascript:void(0)027-86730762"><p>027-86730762</p></a> -->
+                                    </div>
+                                </a>
+                                <?php if ($value['cur_price']==0){?>
+                                <div class="rt2">
+                                    <p class="green"><i class="f15 mr5">&yen;</i><i class="f20"><span style='color:green'>免费</span></i></p>
+
+                                </div>
+                                <?php }else{ ?>
+                                <div class="rt2">
+                                    <p class="orange"><i class="f15 mr5">&yen;</i><i class="f20"><?php echo $value['cur_price']?></i></p>
+
+                                </div>
+                                <?php }?>
+                            </div>
                         </div>
-                        <div class="rt">
-                            <a href="#" title="">
-                                <div class="rt1">
-                                    <h3><?php echo $value['cur_name'] ?></h3>
-                                    <p><?php echo mb_substr($value['cur_describe'],0,20,"UTF-8") ?>......</p>
-                                  
-                               </div>
-                            </a>
-                            <?php if ($value['cur_price']==0){?>
-                            <div class="rt2">
-                               <p class="green"><i class="f15 mr5">&yen;</i><i class="f20">免费</i></p>
-                             
-                           </div>
-                           <?php }else{ ?>
-                              <div class="rt2">
-                                <p class="orange"><i class="f15 mr5">&yen;</i><i class="f20"><?php echo $value['cur_price']?></i></p>
-                             
-                           </div>
-                          <?php }?>
-                        </div>
-                      </div>
-                   </li>
-                 </ul>
-              </div>
-          <?php }?>
-      </div>
+                    </li>
+                </ul>
+
+
+            </div>
+            <?php }?>
+        </div>
+
       
     </div>
 
